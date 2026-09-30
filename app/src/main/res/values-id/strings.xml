@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">YtMedia</string>
+    <string name="greeting">Salam!</string>
+    <string name="subtitle">Pengonversi &amp; pengunduh media yt-dlp yang cepat dan ringan</string>
+
+    <!-- Main Screen -->
+    <string name="paste_url_hint">Tempel URL YouTube</string>
+    <string name="btn_analyze">Analisis URL</string>
+    <string name="btn_random_words">🎲 Contoh Acak</string>
+    <string name="paste_from_clipboard">Tempel</string>
+    <string name="clear_input">Hapus</string>
+
+    <!-- State & Information -->
+    <string name="state_idle">Masukkan tautan YouTube di atas untuk memeriksa format</string>
+    <string name="state_analyzing">Menganalisis metadata stream dengan yt-dlp…</string>
+    <string name="state_ready">Stream Siap</string>
+    <string name="state_downloading">Mengunduh…</string>
+    <string name="state_converting">Mengonversi aliran media…</string>
+    <string name="state_completed">Unduhan Selesai</string>
+    <string name="state_failed">Operasi Gagal</string>
+    <string name="state_cancelled">Dibatalkan</string>
+
+    <!-- Media Options -->
+    <string name="media_type_label">Jenis Format Output</string>
+    <string name="type_mp4">Video MP4</string>
+    <string name="type_mp3">Audio MP3</string>
+    <string name="resolution_label">Pilih Resolusi</string>
+    <string name="audio_quality_label">Kualitas Audio</string>
+    <string name="audio_quality_high">Kualitas Tinggi (320 kbps)</string>
+    <string name="audio_quality_med">Standar (192 kbps)</string>
+    <string name="audio_quality_low">Kompak (128 kbps)</string>
+
+    <!-- Actions -->
+    <string name="btn_download">Unduh</string>
+    <string name="btn_cancel">Batalkan</string>
+    <string name="btn_retry">Coba Lagi</string>
+    <string name="btn_play">Putar</string>
+    <string name="btn_open">Buka Dengan…</string>
+    <string name="btn_share">Bagikan</string>
+    <string name="btn_delete">Hapus</string>
+    <string name="btn_details">Lihat Detail</string>
+
+    <!-- Progress -->
+    <string name="progress_speed">Kecepatan: %1$s</string>
+    <string name="progress_size">%1$s / %2$s</string>
+    <string name="progress_eta">Sisa Waktu: %1$s</string>
+
+    <!-- Navigation -->
+    <string name="nav_convert">Pengunduh</string>
+    <string name="nav_downloads">Pustaka</string>
+    <string name="nav_settings">Pengaturan</string>
+
+    <!-- Downloads / Library Screen -->
+    <string name="library_title">Media Terunduh</string>
+    <string name="library_empty_title">Belum ada media yang diunduh</string>
+    <string name="library_empty_desc">Konversi dan unduh video dari tab Pengunduh untuk mengisi pustaka Anda.</string>
+    <string name="dialog_delete_title">Hapus File</string>
+    <string name="dialog_delete_confirm">Apakah Anda yakin ingin menghapus permanen \"%1$s\"?</string>
+    <string name="file_deleted">File berhasil dihapus</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_section_downloads">Unduhan</string>
+    <string name="settings_download_dir_title">Lokasi Unduhan</string>
+    <string name="settings_download_dir_default">Penyimpanan Internal / Download / YtMedia</string>
+    <string name="settings_btn_choose_folder">Pilih Folder</string>
+    <string name="settings_btn_reset_folder">Atur Ulang ke Default</string>
+    <string name="settings_auto_open_title">Buka Otomatis</string>
+    <string name="settings_auto_open_desc">Langsung buka pemutar setelah unduhan selesai</string>
+
+    <string name="settings_section_appearance">Tampilan</string>
+    <string name="settings_theme_title">Tema Visual</string>
+    <string name="settings_theme_desc">Utilitas minimalis geometris gelap</string>
+
+    <string name="settings_section_language">Bahasa</string>
+    <string name="settings_lang_en">English</string>
+    <string name="settings_lang_id">Bahasa Indonesia</string>
+
+    <string name="settings_section_about">Tentang</string>
+    <string name="settings_app_name">Utilitas YtMedia</string>
+    <string name="settings_version_title">Versi Aplikasi</string>
+    <string name="settings_version_value">1.0.0 (Build 1)</string>
+    <string name="settings_ytdlp_title">Mesin Utama yt-dlp</string>
+    <string name="settings_ytdlp_version">yt-dlp 2025.02.19</string>
+    <string name="settings_ytdlp_btn_check">Periksa Pembaruan Mesin</string>
+    <string name="settings_ytdlp_uptodate">yt-dlp sudah versi terbaru</string>
+    <string name="settings_ffmpeg_title">Integrasi FFmpeg</string>
+    <string name="settings_ffmpeg_version">FFmpeg 7.1-mobile (Media3 muxer)</string>
+    <string name="settings_licenses_title">Lisensi Sumber Terbuka</string>
+    <string name="settings_licenses_desc">yt-dlp (The Unlicense), FFmpeg (LGPL v2.1+), ExoPlayer (Apache 2.0)</string>
+
+    <!-- Player -->
+    <string name="player_title">Pemutar Media</string>
+    <string name="player_audio_now_playing">Pemutaran Audio</string>
+    <string name="player_fullscreen">Layar Penuh</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_url">Silakan masukkan URL YouTube yang valid.</string>
+    <string name="error_video_unavailable">Video ini tidak tersedia atau tidak dapat diakses.</string>
+    <string name="error_network">Gagal terhubung. Periksa koneksi internet Anda dan coba lagi.</string>
+    <string name="error_storage">Gagal menyimpan file. Periksa folder unduhan dan ruang penyimpanan.</string>
+    <string name="error_conversion">Konversi media gagal.</string>
+    <string name="error_generic">Terjadi kesalahan tak terduga: %1$s</string>
+</resources>

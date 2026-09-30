@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">YtMedia</string>
+    <string name="greeting">Greetings!</string>
+    <string name="subtitle">Fast, lightweight yt-dlp media converter &amp; downloader</string>
+
+    <!-- Main Screen -->
+    <string name="paste_url_hint">Paste YouTube URL</string>
+    <string name="btn_analyze">Analyze URL</string>
+    <string name="btn_random_words">🎲 Random Sample</string>
+    <string name="paste_from_clipboard">Paste</string>
+    <string name="clear_input">Clear</string>
+
+    <!-- State & Information -->
+    <string name="state_idle">Enter a YouTube link above to inspect formats</string>
+    <string name="state_analyzing">Analyzing stream metadata with yt-dlp…</string>
+    <string name="state_ready">Stream Ready</string>
+    <string name="state_downloading">Downloading…</string>
+    <string name="state_converting">Converting media stream…</string>
+    <string name="state_completed">Download Complete</string>
+    <string name="state_failed">Operation Failed</string>
+    <string name="state_cancelled">Cancelled</string>
+
+    <!-- Media Options -->
+    <string name="media_type_label">Output Media Type</string>
+    <string name="type_mp4">MP4 Video</string>
+    <string name="type_mp3">MP3 Audio</string>
+    <string name="resolution_label">Select Resolution</string>
+    <string name="audio_quality_label">Audio Quality</string>
+    <string name="audio_quality_high">High Quality (320 kbps)</string>
+    <string name="audio_quality_med">Standard (192 kbps)</string>
+    <string name="audio_quality_low">Compact (128 kbps)</string>
+
+    <!-- Actions -->
+    <string name="btn_download">Download</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_retry">Retry</string>
+    <string name="btn_play">Play</string>
+    <string name="btn_open">Open With…</string>
+    <string name="btn_share">Share</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_details">View Details</string>
+
+    <!-- Progress -->
+    <string name="progress_speed">Speed: %1$s</string>
+    <string name="progress_size">%1$s / %2$s</string>
+    <string name="progress_eta">ETA: %1$s</string>
+
+    <!-- Navigation -->
+    <string name="nav_convert">Downloader</string>
+    <string name="nav_downloads">Downloads</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Downloads / Library Screen -->
+    <string name="library_title">Downloaded Media</string>
+    <string name="library_empty_title">No media downloaded yet</string>
+    <string name="library_empty_desc">Convert and download videos from the Downloader tab to build your library.</string>
+    <string name="dialog_delete_title">Delete File</string>
+    <string name="dialog_delete_confirm">Are you sure you want to permanently delete \"%1$s\"?</string>
+    <string name="file_deleted">File deleted successfully</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_downloads">Downloads</string>
+    <string name="settings_download_dir_title">Download Location</string>
+    <string name="settings_download_dir_default">Internal Storage / Download / YtMedia</string>
+    <string name="settings_btn_choose_folder">Choose Folder</string>
+    <string name="settings_btn_reset_folder">Reset to Default</string>
+    <string name="settings_auto_open_title">Auto-open Media</string>
+    <string name="settings_auto_open_desc">Automatically launch player after download completes</string>
+
+    <string name="settings_section_appearance">Appearance</string>
+    <string name="settings_theme_title">Visual Theme</string>
+    <string name="settings_theme_desc">Dark geometric minimal utility</string>
+
+    <string name="settings_section_language">Language</string>
+    <string name="settings_lang_en">English</string>
+    <string name="settings_lang_id">Bahasa Indonesia</string>
+
+    <string name="settings_section_about">About</string>
+    <string name="settings_app_name">YtMedia Utility</string>
+    <string name="settings_version_title">App Version</string>
+    <string name="settings_version_value">1.0.0 (Build 1)</string>
+    <string name="settings_ytdlp_title">yt-dlp Core Engine</string>
+    <string name="settings_ytdlp_version">yt-dlp 2025.02.19</string>
+    <string name="settings_ytdlp_btn_check">Check Engine Updates</string>
+    <string name="settings_ytdlp_uptodate">yt-dlp core is up to date</string>
+    <string name="settings_ffmpeg_title">FFmpeg Integration</string>
+    <string name="settings_ffmpeg_version">FFmpeg 7.1-mobile (Media3 muxer)</string>
+    <string name="settings_licenses_title">Open Source Licenses</string>
+    <string name="settings_licenses_desc">yt-dlp (The Unlicense), FFmpeg (LGPL v2.1+), ExoPlayer (Apache 2.0)</string>
+
+    <!-- Player -->
+    <string name="player_title">Media Player</string>
+    <string name="player_audio_now_playing">Audio Playback</string>
+    <string name="player_fullscreen">Toggle Fullscreen</string>
+
+    <!-- Error Messages -->
+    <string name="error_invalid_url">Please enter a valid YouTube URL.</string>
+    <string name="error_video_unavailable">This video is unavailable or cannot be accessed.</string>
+    <string name="error_network">Unable to connect. Check your internet connection and try again.</string>
+    <string name="error_storage">Unable to save the file. Check your selected download folder and available storage.</string>
+    <string name="error_conversion">Media conversion failed.</string>
+    <string name="error_generic">An unexpected error occurred: %1$s</string>
+</resources>

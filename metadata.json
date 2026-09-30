@@ -1,0 +1,6 @@
+{
+  "name": "YtMedia",
+  "description": "Lightweight, modern YouTube media converter and downloader powered by yt-dlp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
