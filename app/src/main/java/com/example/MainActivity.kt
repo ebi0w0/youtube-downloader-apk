@@ -28,6 +28,7 @@ import androidx.compose.material.icons.outlined.Folder
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
@@ -150,18 +151,16 @@ fun MainAppScaffold(
             .background(GeoBlack),
         containerColor = GeoBlack,
         bottomBar = {
-            Box(
+            NavigationBar(
+                containerColor = GeoSurface,
+                contentColor = GeoTextPrimary,
+                tonalElevation = 0.dp,
+                windowInsets = NavigationBarDefaults.windowInsets,
                 modifier = Modifier
                     .fillMaxWidth()
                     .border(1.dp, GeoBorderSubtle)
             ) {
-                NavigationBar(
-                    containerColor = GeoSurface,
-                    contentColor = GeoTextPrimary,
-                    tonalElevation = 0.dp,
-                    modifier = Modifier.height(64.dp)
-                ) {
-                    // Downloader (Convert) tab
+                // Downloader (Convert) tab
                     NavigationBarItem(
                         selected = currentTab == NavigationTab.CONVERT,
                         onClick = { viewModel.selectTab(NavigationTab.CONVERT) },
@@ -242,7 +241,6 @@ fun MainAppScaffold(
                         )
                     )
                 }
-            }
         }
     ) { innerPadding ->
         Box(

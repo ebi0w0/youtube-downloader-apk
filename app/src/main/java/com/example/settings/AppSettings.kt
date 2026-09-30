@@ -8,22 +8,18 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.io.File
 
-class AppSettings(context: Context) {
+class AppSettings(private val context: Context) {
 
     private val prefs: SharedPreferences =
         context.getSharedPreferences("ytmedia_prefs", Context.MODE_PRIVATE)
 
-    private val defaultDownloadDir: String = try {
-        val publicDownloads = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-        val appDir = File(publicDownloads, "YtMedia")
-        if (!appDir.exists()) {
-            appDir.mkdirs()
+    private val defaultDownloadDir: String = run {
+        val appDownloads = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)?.resolve("YtMedia")
+            ?: File(context.filesDir, "YtMedia")
+        if (!appDownloads.exists()) {
+            appDownloads.mkdirs()
         }
-        appDir.absolutePath
-    } catch (_: Exception) {
-        val fallback = File(context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS), "YtMedia")
-        fallback.mkdirs()
-        fallback.absolutePath
+        appDownloads.absolutePath
     }
 
     private val _downloadPath = MutableStateFlow(
@@ -42,6 +38,10 @@ class AppSettings(context: Context) {
     val language: StateFlow<String> = _language.asStateFlow()
 
     fun setDownloadPath(path: String) {
+        val folder = File(path)
+        if (!folder.exists()) {
+            folder.mkdirs()
+        }
         prefs.edit().putString(KEY_DOWNLOAD_DIR, path).apply()
         _downloadPath.value = path
     }

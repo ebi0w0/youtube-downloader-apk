@@ -60,10 +60,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _urlInput = MutableStateFlow("")
     val urlInput: StateFlow<String> = _urlInput.asStateFlow()
 
-    // Random funny word status
-    private val _randomFunnyWord = MutableStateFlow("")
-    val randomFunnyWord: StateFlow<String> = _randomFunnyWord.asStateFlow()
-
     // Format choices
     private val _selectedMediaType = MutableStateFlow(MediaType.MP4)
     val selectedMediaType: StateFlow<MediaType> = _selectedMediaType.asStateFlow()
@@ -132,13 +128,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     fun onClearUrl() {
         _urlInput.value = ""
         downloadManager.resetState()
-    }
-
-    fun onGenerateRandomWords() {
-        val sample = SampleData.getRandomSample()
-        _randomFunnyWord.value = sample.funnyPhrase
-        _urlInput.value = sample.url
-        downloadManager.analyzeUrl(sample.url)
     }
 
     fun analyzeUrl() {

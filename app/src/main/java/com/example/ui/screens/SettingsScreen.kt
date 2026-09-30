@@ -25,7 +25,6 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Language
-import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.HorizontalDivider
@@ -212,30 +211,7 @@ fun SettingsScreen(
             }
         }
 
-        // SECTION 2: APPEARANCE
-        SettingsSection(
-            title = stringResource(R.string.settings_section_appearance),
-            icon = Icons.Default.Palette
-        ) {
-            Column(
-                modifier = Modifier.padding(14.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.settings_theme_title),
-                    color = GeoTextPrimary,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Medium
-                )
-                Text(
-                    text = stringResource(R.string.settings_theme_desc),
-                    color = GeoTextMuted,
-                    fontSize = 12.sp
-                )
-            }
-        }
-
-        // SECTION 3: LANGUAGE
+        // SECTION 2: LANGUAGE
         SettingsSection(
             title = stringResource(R.string.settings_section_language),
             icon = Icons.Default.Language

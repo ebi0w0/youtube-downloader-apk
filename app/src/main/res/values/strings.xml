@@ -62,15 +62,11 @@
     <string name="settings_title">Settings</string>
     <string name="settings_section_downloads">Downloads</string>
     <string name="settings_download_dir_title">Download Location</string>
-    <string name="settings_download_dir_default">Internal Storage / Download / YtMedia</string>
+    <string name="settings_download_dir_default">Storage / Download / YtMedia</string>
     <string name="settings_btn_choose_folder">Choose Folder</string>
     <string name="settings_btn_reset_folder">Reset to Default</string>
     <string name="settings_auto_open_title">Auto-open Media</string>
     <string name="settings_auto_open_desc">Automatically launch player after download completes</string>
-
-    <string name="settings_section_appearance">Appearance</string>
-    <string name="settings_theme_title">Visual Theme</string>
-    <string name="settings_theme_desc">Dark geometric minimal utility</string>
 
     <string name="settings_section_language">Language</string>
     <string name="settings_lang_en">English</string>

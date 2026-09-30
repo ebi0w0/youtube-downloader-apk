@@ -62,15 +62,11 @@
     <string name="settings_title">Pengaturan</string>
     <string name="settings_section_downloads">Unduhan</string>
     <string name="settings_download_dir_title">Lokasi Unduhan</string>
-    <string name="settings_download_dir_default">Penyimpanan Internal / Download / YtMedia</string>
+    <string name="settings_download_dir_default">Penyimpanan / Download / YtMedia</string>
     <string name="settings_btn_choose_folder">Pilih Folder</string>
     <string name="settings_btn_reset_folder">Atur Ulang ke Default</string>
     <string name="settings_auto_open_title">Buka Otomatis</string>
     <string name="settings_auto_open_desc">Langsung buka pemutar setelah unduhan selesai</string>
-
-    <string name="settings_section_appearance">Tampilan</string>
-    <string name="settings_theme_title">Tema Visual</string>
-    <string name="settings_theme_desc">Utilitas minimalis geometris gelap</string>
 
     <string name="settings_section_language">Bahasa</string>
     <string name="settings_lang_en">English</string>

@@ -1,6 +1,12 @@
 package com.example.ui.screens
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
+import android.widget.Toast
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -63,6 +69,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.R
@@ -102,11 +109,52 @@ fun ConvertScreen(
     val keyboardController = LocalSoftwareKeyboardController.current
 
     val urlInput by viewModel.urlInput.collectAsState()
-    val randomFunnyWord by viewModel.randomFunnyWord.collectAsState()
     val selectedMediaType by viewModel.selectedMediaType.collectAsState()
     val selectedResolution by viewModel.selectedResolution.collectAsState()
     val selectedAudioQuality by viewModel.selectedAudioQuality.collectAsState()
     val downloadState by viewModel.downloadState.collectAsState()
+
+    // Permissions to request for storage and media access
+    val permissionsToRequest = remember {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arrayOf(
+                Manifest.permission.READ_MEDIA_VIDEO,
+                Manifest.permission.READ_MEDIA_AUDIO
+            )
+        } else {
+            arrayOf(
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+        }
+    }
+
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissionsMap ->
+        val anyGranted = permissionsMap.values.any { it }
+        if (anyGranted || permissionsMap.isEmpty()) {
+            viewModel.startDownload()
+        } else {
+            Toast.makeText(
+                context,
+                "Media and storage permissions are required to save and manage downloads",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    fun startDownloadWithPermissionCheck() {
+        val hasPermissions = permissionsToRequest.all { perm ->
+            ContextCompat.checkSelfPermission(context, perm) == PackageManager.PERMISSION_GRANTED
+        }
+
+        if (hasPermissions || Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            viewModel.startDownload()
+        } else {
+            permissionLauncher.launch(permissionsToRequest)
+        }
+    }
 
     val scrollState = rememberScrollState()
 
@@ -143,7 +191,7 @@ fun ConvertScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(14.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 OutlinedTextField(
                     value = urlInput,
@@ -201,55 +249,31 @@ fun ConvertScreen(
                     }
                 )
 
-                // Actions: Analyze button and generate random funny words button
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp)
+                // Single full-width prominent Analyze URL button (random sample button removed completely)
+                GeoButton(
+                    onClick = {
+                        keyboardController?.hide()
+                        viewModel.analyzeUrl()
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .testTag("analyze_button"),
+                    enabled = urlInput.isNotBlank() && downloadState !is DownloadState.Analyzing && downloadState !is DownloadState.Downloading
                 ) {
-                    GeoButton(
-                        onClick = {
-                            keyboardController?.hide()
-                            viewModel.analyzeUrl()
-                        },
-                        modifier = Modifier
-                            .weight(1f)
-                            .testTag("analyze_button"),
-                        enabled = urlInput.isNotBlank() && downloadState !is DownloadState.Analyzing && downloadState !is DownloadState.Downloading
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
                     ) {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Search,
-                                contentDescription = null,
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = stringResource(R.string.btn_analyze),
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.SemiBold
-                            )
-                        }
-                    }
-
-                    // *generate a random funny words* button
-                    GeoOutlinedButton(
-                        onClick = {
-                            keyboardController?.hide()
-                            viewModel.onGenerateRandomWords()
-                        },
-                        modifier = Modifier
-                            .weight(1f)
-                            .testTag("random_words_button"),
-                        enabled = downloadState !is DownloadState.Analyzing && downloadState !is DownloadState.Downloading
-                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = if (randomFunnyWord.isNotEmpty()) randomFunnyWord else stringResource(R.string.btn_random_words),
-                            fontSize = 12.sp,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                            text = stringResource(R.string.btn_analyze),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.SemiBold
                         )
                     }
                 }
@@ -309,7 +333,7 @@ fun ConvertScreen(
                     onSelectMediaType = { viewModel.selectMediaType(it) },
                     onSelectResolution = { viewModel.selectResolution(it) },
                     onSelectAudioQuality = { viewModel.selectAudioQuality(it) },
-                    onStartDownload = { viewModel.startDownload() }
+                    onStartDownload = { startDownloadWithPermissionCheck() }
                 )
             }
 
