@@ -89,11 +89,24 @@ class DownloadManager(
 
                 result.fold(
                     onSuccess = { file ->
+                        var trueDuration = if (info.durationSeconds > 0) info.durationSeconds else 15L
+                        try {
+                            val retriever = android.media.MediaMetadataRetriever()
+                            retriever.setDataSource(file.absolutePath)
+                            val durStr = retriever.extractMetadata(android.media.MediaMetadataRetriever.METADATA_KEY_DURATION)
+                            val ms = durStr?.toLongOrNull() ?: 0L
+                            if (ms > 0) {
+                                trueDuration = ms / 1000L
+                            }
+                            retriever.release()
+                        } catch (_: Exception) {
+                        }
+
                         val downloadedMedia = DownloadedMedia(
                             videoId = info.id,
                             title = info.title,
                             channel = info.uploader,
-                            durationSeconds = info.durationSeconds,
+                            durationSeconds = trueDuration,
                             thumbnailUrl = info.thumbnailUrl,
                             filePath = file.absolutePath,
                             fileName = file.name,
